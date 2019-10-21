@@ -36,17 +36,17 @@
     }
 
     .sidebar {
-        border: ;
+        border: 0;
         padding: 5px;
         margin: 5px;
     }
 
     .main {
-        border: ;
+        border: 0;
         padding: 5px;
         margin: 5px;
         float: right;
-        background-color;
+        background-color: 0;
     }
 
     .card {
@@ -105,38 +105,38 @@
                     <div id="fiveday">
                         <div class="card" id="fivedaycard">
                             <h5 class="card-title">Day 1</h5>
-                            <div class="date">Date</div>
+                             
                             <div class="image"></div>
-                            <div class="temp5">Temperature: </div>
-                            <div class="humidity5"></div>
+                            <div class="temp1">Temp: </div>
+                            <div class="humidity1">Humidity: </div>
                         </div>
                         <div class="card" id="fivedaycard">
-                            <h5 class="card-title">Day 1</h5>
-                            <div class="date">Date</div>
+                            <h5 class="card-title">Day 2</h5>
+                            
                             <div class="image"></div>
-                            <div class="temp5">Temperature: </div>
-                            <div class="humidity5"></div>
+                            <div class="temp2">Temp: </div>
+                            <div class="humidity2">Humidity: </div>
                         </div>
                         <div class="card" id="fivedaycard">
-                            <h5 class="card-title">Day 1</h5>
-                            <div class="date">Date</div>
+                            <h5 class="card-title">Day 3</h5>
+                            
                             <div class="image"></div>
-                            <div class="temp5">Temperature: </div>
-                            <div class="humidity5"></div>
+                            <div class="temp3">Temp: </div>
+                            <div class="humidity3">Humidity: </div>
                         </div>
                         <div class="card" id="fivedaycard">
-                            <h5 class="card-title">Day 1</h5>
-                            <div class="date">Date</div>
+                            <h5 class="card-title">Day 4</h5>
+                           
                             <div class="image"></div>
-                            <div class="temp5">Temperature: </div>
-                            <div class="humidity5"></div>
+                            <div class="temp4">Temp: </div>
+                            <div class="humidity4">Humidity: </div>
                         </div>
                         <div class="card" id="fivedaycard">
-                            <h5 class="card-title">Day 1</h5>
-                            <div class="date">Date</div>
+                            <h5 class="card-title">Day 5</h5>
+                           
                             <div class="image"></div>
-                            <div class="temp5">Temperature: </div>
-                            <div class="humidity5"></div>
+                            <div class="temp5">Temp: </div>
+                            <div class="humidity5">Humidity: </div>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
                 // cityInput = cityInput.split(' ');
                 // cityInput = cityInput.join('-');
                 console.log(cityInput);
-                // This is Carina's personal API key
+                
                 var APIKey = "5335a9a467dcb8fc39f3df3fe333d51c";
                 // Here we are building the URL we need to query the database
                 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&units=imperial&appid=" + APIKey;
@@ -181,14 +181,28 @@
                     console.log("Temperature (F): " + response.main.temp);
                 });
                 $.ajax({
-                    url: queryURL1,
+                    url: queryURL1, 
                     method: "GET"
                 }).then(function (response) {
+                    $(".city").html("<p>" + response.name + "<p>");
+                    $(".temp1").text("temp: " + response.list[0].main.temp);
+                    $(".temp2").text("temp: " + response.list[1].main.temp);
+                    $(".temp3").text("temp: " + response.list[2].main.temp);
+                    $(".temp4").text("temp: " + response.list[3].main.temp);
+                    $(".temp5").text("temp: " + response.list[4].main.temp);
+
+                    $(".humidity1").text("humidity: " + response.list[0].main.temp);
+                    $(".humidity2").text("humidity: " + response.list[1].main.temp);
+                    $(".humidity3").text("humidity: " + response.list[2].main.temp);
+                    $(".humidity4").text("humidity: " + response.list[3].main.temp);
+                    $(".humidity5").text("humidity: " + response.list[4].main.temp);
                     console.log("forecast URL: " + queryURL1);
                     console.log("response 2: " + response);
                     console.log("temperature: " + response.list[0].main.temp);
                 });
             });
+
+            
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
